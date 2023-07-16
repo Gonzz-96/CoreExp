@@ -19,8 +19,6 @@ class DrawingView: UIView {
     override func draw(_ rect: CGRect) {
         guard let cgContext = UIGraphicsGetCurrentContext() else { return }
         currentContext = cgContext
-//        drawShit(currentCotext)
-        drawShitWithPath(currentContext)
     }
 
     private func drawShit(_ context: CGContext) {
@@ -44,5 +42,26 @@ class DrawingView: UIView {
         context.addPath(path)
         context.setStrokeColor(UIColor.blue.cgColor)
         context.strokePath()
+    }
+}
+
+// MARK: - Trigonometrical Stuff
+
+extension DrawingView {
+
+    public func drawShape(withNumberOfSides sides: Int) {
+        let path = CGMutablePath()
+        let radius = (2.0 / 5.0) * frame.width
+        path.move(to: CGPoint(x: center.x + radius, y: center.y))
+        let perimeterInRads = 2 * Double.pi
+        for i in 1..<sides {
+            let x = radius * cos((Double(i) / Double(sides)) * perimeterInRads) + center.x
+            let y = radius * sin((Double(i) / Double(sides)) * perimeterInRads) + center.y
+            path.addLine(to: CGPointMake(x, y))
+        }
+        path.closeSubpath()
+        currentContext.addPath(path)
+        currentContext.setStrokeColor(UIColor.systemPink.cgColor)
+        currentContext.strokePath()
     }
 }
