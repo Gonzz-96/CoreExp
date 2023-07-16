@@ -12,6 +12,7 @@ import Foundation
 class DrawingView: UIView {
 
     private var currentContext: CGContext!
+    private var attempToDraw: Int?
 
     private lazy var frameMiddlePoint: CGPoint =
         CGPoint(x: frame.width / 2.0, y: frame.height / 2.0)
@@ -19,6 +20,10 @@ class DrawingView: UIView {
     override func draw(_ rect: CGRect) {
         guard let cgContext = UIGraphicsGetCurrentContext() else { return }
         currentContext = cgContext
+        if let sides = attempToDraw {
+            drawShape(withNumberOfSides: sides)
+            attempToDraw = nil
+        }
     }
 
     private func drawShit(_ context: CGContext) {
@@ -60,6 +65,10 @@ extension DrawingView {
             path.addLine(to: CGPointMake(x, y))
         }
         path.closeSubpath()
+        guard let _ = currentContext else {
+            attempToDraw = sides
+            return
+        }
         currentContext.addPath(path)
         currentContext.setStrokeColor(UIColor.systemPink.cgColor)
         currentContext.strokePath()
