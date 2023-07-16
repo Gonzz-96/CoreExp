@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreGraphics
+import Foundation
 
 class DrawingView: UIView {
 
@@ -17,8 +18,9 @@ class DrawingView: UIView {
 
     override func draw(_ rect: CGRect) {
         guard let cgContext = UIGraphicsGetCurrentContext() else { return }
-        drawShit(cgContext)
-        backgroundColor = .white
+        currentContext = cgContext
+//        drawShit(currentCotext)
+        drawShitWithPath(currentContext)
     }
 
     private func drawShit(_ context: CGContext) {
@@ -33,5 +35,14 @@ class DrawingView: UIView {
     }
 
     private func drawShitWithPath(_ context: CGContext) {
+        let path = CGMutablePath()
+        path.move(to: CGPoint(x: frameMiddlePoint.x, y: 0))
+        path.addLine(to: CGPoint(x: frame.width, y: frameMiddlePoint.y))
+        path.addLine(to: CGPoint(x: frameMiddlePoint.x, y: frame.height))
+        path.addLine(to: CGPoint(x: 0, y: frameMiddlePoint.y))
+        path.closeSubpath()
+        context.addPath(path)
+        context.setStrokeColor(UIColor.blue.cgColor)
+        context.strokePath()
     }
 }
