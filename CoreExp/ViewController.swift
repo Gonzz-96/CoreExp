@@ -16,12 +16,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUi()
+        // WARNING: uncommenting the next line will cause the creation of multiple
+        // objects containing an array with a million of odubles. This was just
+        // an expriment to see how memory increase as resource-consuming objects
+        // are created
+//        allocateALotOfStuff()
     }
 
     private func setUpUi() {
         drawingView = DrawingView(frame: buildFrameWithSafeArea())
         drawingView.backgroundColor = .white
-        drawingView.drawShape(withNumberOfSides: 3)
+        drawingView.drawShape(withNumberOfSides: 7)
 
         slider = UISlider()
 
@@ -33,7 +38,7 @@ class ViewController: UIViewController {
         slider.minimumValue = 3
         slider.maximumValue = 10
         slider.isContinuous = false
-        slider.addTarget(self, action: #selector(didSliderValueChange), for: .valueChanged)
+//        slider.addTarget(self, action: #selector(didSliderValueChange), for: .valueChanged)
         NSLayoutConstraint.activate([
             slider.topAnchor.constraint(equalTo: drawingView.bottomAnchor),
             slider.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -55,5 +60,15 @@ class ViewController: UIViewController {
         return CGRect.makeSquareFrame(
             withSideLength: view.frame.width,
             in: CGPoint(x: 0, y: paddingTop))
+    }
+
+    func allocateALotOfStuff() {
+        var stuff = [ResourceConsumingType]()
+
+        for _ in 0..<100 {
+            stuff.append(ResourceConsumingType())
+        }
+
+        print("A lot of memory")
     }
 }

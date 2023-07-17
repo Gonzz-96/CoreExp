@@ -14,6 +14,7 @@
 		613DA7DA2A648828006431BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 613DA7D82A648828006431BE /* LaunchScreen.storyboard */; };
 		613DA7E22A649043006431BE /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613DA7E12A649043006431BE /* DrawingView.swift */; };
 		613DA7E52A6492C3006431BE /* CGFrame+FrameCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613DA7E42A6492C3006431BE /* CGFrame+FrameCreation.swift */; };
+		613DA7E72A64BAB9006431BE /* ResourceConsumingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613DA7E62A64BAB9006431BE /* ResourceConsumingType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		613DA7DB2A648828006431BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		613DA7E12A649043006431BE /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
 		613DA7E42A6492C3006431BE /* CGFrame+FrameCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFrame+FrameCreation.swift"; sourceTree = "<group>"; };
+		613DA7E62A64BAB9006431BE /* ResourceConsumingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceConsumingType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				613DA7E42A6492C3006431BE /* CGFrame+FrameCreation.swift */,
+				613DA7E62A64BAB9006431BE /* ResourceConsumingType.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -153,6 +156,7 @@
 				613DA7D02A648826006431BE /* SceneDelegate.swift in Sources */,
 				613DA7E22A649043006431BE /* DrawingView.swift in Sources */,
 				613DA7E52A6492C3006431BE /* CGFrame+FrameCreation.swift in Sources */,
+				613DA7E72A64BAB9006431BE /* ResourceConsumingType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
